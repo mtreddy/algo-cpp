@@ -65,6 +65,40 @@ void bTree::postOrder(Node *node){
     }
     return;
 }
+string findPath(Node *root, int value){
+    Node *tmp;
+    tmp = root;
+    string str;
+    while(tmp){
+        if(tmp->data < value){str+="R";tmp = tmp->right;}
+        else{str+="L"; tmp=tmp->left;}
+    }
+    return str;
+}
+
+Node * lca(Node * root, int v1,int v2)
+{
+    if(root == NULL)
+        return root;
+    string str1, str2;
+    str1 = findPath(root, v1);
+    str2 = findPath(root, v2);
+    cout << str1 << endl;
+    cout << str2 << endl;
+     Node *tmp=root;
+    string::iterator i=str1.begin(),j=str2.begin();
+    if(*i == "" || *j == "")
+        return root;
+
+    while(*i == *j){
+        i++;
+        j++;
+        if(*i == 'R') {tmp=tmp->right;}
+        else{tmp=tmp->left;}
+    }
+    return tmp;
+}
+
 int main(){
     class bTree bt;
     Node *root=NULL;
@@ -73,10 +107,13 @@ int main(){
     bt.node_insert(root, 35);
     bt.node_insert(root, 20);
     bt.node_insert(root, 40);
+    bt.node_insert(root, 41);
+    bt.node_insert(root, 36);
     cout << "in order traversal" << endl;
     bt.inOrder(root);
     cout << "pre order traversal" << endl;
     bt.preOrder(root);
     cout << "post order traversal" << endl;
     bt.postOrder(root);
+    lca(root,41,36);
 }
