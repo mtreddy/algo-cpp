@@ -28,22 +28,39 @@ class queWS{
                 return 0;
             }
         }
+        int top(){
+            int val = q1.top();
+            return val;
+        }
 };
 
 int main()
 {
     class queWS qs;
-    qs.queue(100);
-    qs.queue(200);
-    qs.queue(300);
-    qs.queue(400);
+    int Q;
+    int type;
+    int val = 0;
+//    qs.queue(100);
+//    qs.queue(200);
+//    qs.queue(300);
+//    qs.queue(400);
     cout << "size of the queue:" << qs.q1.size() << endl;
-    /*
-    while(!qs.q1.empty()){
-        cout << qs.q1.top() << endl;
-        qs.q1.pop();
-    } */
-    cout << "top element is:" << qs.dequeue() << endl;
+    cout << "Enter no of elements" << endl;
+    cin >> Q;
+    while(Q--){
+        cin >> type;
+        if(type == 1) {
+            cin >> val;
+            qs.queue(val);
+        } else if(type == 2){
+            qs.dequeue();
+        }else if(type == 3) {
+            cout << qs.top() << endl;
+        }
+    } 
+    cout << "top element is:" << qs.top() << endl;
+    cout << "popping :" << qs.dequeue() << endl;
+    cout << "top element is:" << qs.top() << endl;
 
     
 }

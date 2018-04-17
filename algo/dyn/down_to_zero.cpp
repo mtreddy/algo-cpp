@@ -42,6 +42,7 @@ For the case 2, we can either go  ->  ->  ->  ->  or  ->  ->  -> . The 2nd optio
 #include<fstream>
 #include<map>
 #include<math.h>
+#include<bits/stdc++.h>
 using namespace std;
 map<int, int> minA;
 int minVal(int x){
@@ -56,7 +57,9 @@ int minVal(int x){
         
         if(x%i == 0){
             int factor = x/i;
-            minV = min(minV, 1+minVal(factor));
+            minV = min(minV, 1+minVal(i));
+            cout << "min " << minV << endl;
+            return minV;
         }
     }
     minV = min(minV, 1+minVal(x-1));
