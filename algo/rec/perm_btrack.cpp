@@ -10,7 +10,7 @@ void RecPermute(string soFar, string rest)
          for (int i = 0; i < rest.length(); i++) {
              string remaining = rest.substr(0, i)
              + rest.substr(i+1);
-             //cout << soFar << endl;
+             cout << soFar << " " << rest[i] << endl;
              RecPermute(soFar + rest[i], remaining);
          }
      }

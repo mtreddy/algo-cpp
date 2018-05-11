@@ -1,8 +1,13 @@
 
 CC = g++
 
-all: down_to_zero binCoff lcs lcs_rep
+all: down_to_zero binCoff lcs lcs_rep coin
 
+coin: coin.o
+	$(CC) -g3 -o coin coin.o
+
+coin.o : coin.cpp
+	$(CC) -c coin.cpp
 down_to_zero: down_to_zero.o
 	$(CC) -g3 -o down_to_zero down_to_zero.o
 
@@ -28,4 +33,4 @@ lcs_rep.o: lcs_rep.cpp
 	$(CC) -g3 -c lcs_rep.cpp
 
 clean:
-	rm down_to_zero down_to_zero.o binCoff.o binCoff lcs lcs.o  lcs_rep lcs_rep.o
+	rm down_to_zero down_to_zero.o binCoff.o binCoff lcs lcs.o  lcs_rep lcs_rep.o coin coin.o
